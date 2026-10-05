@@ -1,14 +1,17 @@
 ---
 import { SITE } from '../site';
+const { cta = true } = Astro.props as { cta?: boolean };
 const year = new Date().getFullYear();
 ---
 
 <footer class="container">
   <hr />
-  <div>
-    <p class="cta serif">Have something worth designing?</p>
-    <a class="email" href={`mailto:${SITE.email}`}>{SITE.email}</a>
-  </div>
+  {cta && (
+    <div>
+      <p class="cta serif">Have something worth designing?</p>
+      <a class="email" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+    </div>
+  )}
   <ul>
     {SITE.links.map((l) => <li><a href={l.href} rel="me noopener" target="_blank">{l.label}</a></li>)}
   </ul>

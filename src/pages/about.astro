@@ -41,22 +41,30 @@ const recognition = [
   "D'source SDG Challenge — Winner",
   'Information is Beautiful Awards — Longlist',
 ];
+
+const focus = [
+  { label: 'Design systems', tone: 'green' },
+  { label: 'LLM & agent UX', tone: 'blue' },
+  { label: 'User research', tone: 'yellow' },
+  { label: 'B2B SaaS', tone: 'red' },
+];
+const toolkit = ['Figma', 'FigJam', 'Maze', 'Hotjar', 'Notion', 'Linear'];
 ---
 
 <Base
   title="About"
   description={`${SITE.name} is a ${SITE.role} at ${SITE.company}, designing AI-powered commerce tools for 400+ D2C brands.`}
 >
-  <section class="container about">
-    <header class="intro">
-      <p class="muted eyebrow">{SITE.role} at {SITE.company} · {SITE.location}</p>
+  <div class="about minimal">
+    <header class="intro" data-reveal>
+      <p class="meta">{SITE.role} · {SITE.company} · {SITE.location}</p>
       <h1 class="serif">
         I design AI-powered commerce tools that help 400+ brands sell, support and grow on WhatsApp.
       </h1>
     </header>
 
-    <div class="cols">
-      <div class="story prose">
+    <section class="cols" aria-label="Story">
+      <div class="story" data-reveal>
         <p class="lead">My path into product design wasn't a straight line: architecture, then information design, then software.</p>
         <p>
           Architecture at NIT Raipur taught me to think in systems: how parts depend on each other, and
@@ -73,27 +81,27 @@ const recognition = [
           Outside work I'm exploring how AI is changing design, both as a tool and as a material,
           through side projects like <em>8 Frames</em> and experiments with generative interfaces.
         </p>
-        <p class="open">
-          Always happy to talk about AI, design systems or hard B2B problems.<br />
-          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-        </p>
       </div>
 
-      <aside class="facts">
-        <h2 class="label muted">Toolkit</h2>
-        <p>Figma, FigJam, Maze, Hotjar, Notion, Linear</p>
-        <h2 class="label muted">Focus</h2>
-        <p>Design systems, LLM &amp; agent UX, user research, B2B SaaS</p>
+      <aside class="facts" data-reveal>
+        <h2 class="meta">Focus</h2>
+        <ul class="tags">
+          {focus.map((f) => <li class={`tag ${f.tone}`}>{f.label}</li>)}
+        </ul>
+        <h2 class="meta">Toolkit</h2>
+        <ul class="tools">
+          {toolkit.map((t) => <li>{t}</li>)}
+        </ul>
       </aside>
-    </div>
+    </section>
 
     <section aria-labelledby="shipped">
-      <h2 id="shipped" class="label muted">Selected impact at {SITE.company}</h2>
-      <ul class="shipped">
-        {shipped.map((s) => (
-          <li>
+      <h2 id="shipped" class="meta heading" data-reveal>Selected impact at {SITE.company}</h2>
+      <ul class="bento">
+        {shipped.map((s, i) => (
+          <li class="card" data-reveal style={`--i: ${i}`}>
             <p class="stat serif">{s.stat}</p>
-            <p class="muted small">{s.label}</p>
+            <p class="label">{s.label}</p>
             <h3>{s.title}</h3>
             <p class="muted">{s.body}</p>
           </li>
@@ -102,12 +110,12 @@ const recognition = [
     </section>
 
     <section aria-labelledby="experience">
-      <h2 id="experience" class="label muted">Experience</h2>
-      <ul class="cv">
-        {experience.map((e) => (
-          <li>
-            <span><strong>{e.role}</strong> <span class="muted">· {e.org}</span></span>
-            <span class="muted">{e.years}</span>
+      <h2 id="experience" class="meta heading" data-reveal>Experience</h2>
+      <ul class="rows">
+        {experience.map((e, i) => (
+          <li data-reveal style={`--i: ${i}`}>
+            <span><strong>{e.role}</strong> <span class="muted">{e.org}</span></span>
+            <span class="mono">{e.years}</span>
           </li>
         ))}
       </ul>
@@ -115,52 +123,118 @@ const recognition = [
 
     <div class="pair">
       <section aria-labelledby="education">
-        <h2 id="education" class="label muted">Education</h2>
-        <ul class="cv">
-          {education.map((e) => (
-            <li>
+        <h2 id="education" class="meta heading" data-reveal>Education</h2>
+        <ul class="rows">
+          {education.map((e, i) => (
+            <li data-reveal style={`--i: ${i}`}>
               <span><strong>{e.role}</strong><br /><span class="muted">{e.org}</span></span>
-              <span class="muted">{e.years}</span>
+              <span class="mono">{e.years}</span>
             </li>
           ))}
         </ul>
       </section>
       <section aria-labelledby="recognition">
-        <h2 id="recognition" class="label muted">Recognition</h2>
-        <ul class="cv">
-          {recognition.map((r) => <li><span>{r}</span></li>)}
+        <h2 id="recognition" class="meta heading" data-reveal>Recognition</h2>
+        <ul class="rows">
+          {recognition.map((r, i) => <li data-reveal style={`--i: ${i}`}><span>{r}</span></li>)}
         </ul>
       </section>
     </div>
-  </section>
+
+    <section class="contact" data-reveal aria-label="Contact">
+      <p class="serif">Always happy to talk about AI, design systems or hard B2B problems.</p>
+      <a class="btn" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+    </section>
+  </div>
 </Base>
 
+<script>
+  import '../scripts/reveal';
+</script>
+
 <style>
-  .about { padding-top: 48px; display: grid; gap: 96px; }
-  .eyebrow { margin: 0 0 20px; }
-  h1 { font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1.05; margin: 0; max-width: 20ch; }
-  .cols { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 64px; align-items: start; }
-  .story { margin: 0; }
-  .lead { font-size: 1.35rem; line-height: 1.45; }
-  .open { border-top: 1px solid var(--line); margin-top: 32px; padding-top: 24px; }
-  .facts { position: sticky; top: 24px; }
-  .facts p { margin: 0 0 32px; }
-  .label { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; }
-  .shipped { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
-  .shipped li { border-top: 1px solid var(--line); padding-top: 24px; }
-  .shipped p { margin: 0; }
-  .stat { font-size: 3.25rem; line-height: 1; color: var(--accent); }
-  .small { font-size: 0.875rem; margin-top: 8px !important; }
-  .shipped h3 { font-size: 1.05rem; margin: 24px 0 6px; }
-  .cv { list-style: none; padding: 0; margin: 0; }
-  .cv li { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
-  .cv li > span:last-child { white-space: nowrap; }
-  strong { font-weight: 500; }
+  .about {
+    max-width: 960px; margin: 0 auto; padding: 72px 24px 0;
+    display: grid; gap: 128px;
+  }
+
+  .muted { color: var(--sub); }
+  .mono, .label { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.02em; color: var(--sub); }
+  .heading { padding-bottom: 16px; border-bottom: 1px solid var(--rule); margin-bottom: 0; }
+
+  /* Intro: one soft warm light spot, no hard backgrounds */
+  .intro { position: relative; }
+  .intro::before {
+    content: ''; position: absolute; inset: -120px -20% -80px; z-index: -1; pointer-events: none;
+    background: radial-gradient(40% 60% at 20% 40%, rgb(210 170 120 / 0.08), transparent 70%);
+  }
+  h1 {
+    margin: 0; max-width: 22ch;
+    font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.1; letter-spacing: -0.03em;
+  }
+
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 80px; align-items: start; }
+  .story p { margin: 0 0 1.25rem; line-height: 1.7; max-width: 62ch; }
+  .lead { font-size: 1.3rem; line-height: 1.5 !important; letter-spacing: -0.01em; }
+  .facts { position: sticky; top: 32px; }
+  .facts .meta { margin-bottom: 14px; }
+  .tags, .tools { list-style: none; margin: 0 0 40px; padding: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 4px 10px; border-radius: 9999px;
+  }
+  .green { background: #edf3ec; color: #346538; }
+  .blue { background: #e1f3fe; color: #1f6c9f; }
+  .yellow { background: #fbf3db; color: #956400; }
+  .red { background: #fdebec; color: #9f2f2d; }
+  @media (prefers-color-scheme: dark) {
+    .green { background: rgb(52 101 56 / 0.25); color: #a9cfac; }
+    .blue { background: rgb(31 108 159 / 0.25); color: #9fcdec; }
+    .yellow { background: rgb(149 100 0 / 0.25); color: #e3c37a; }
+    .red { background: rgb(159 47 45 / 0.25); color: #eba9a7; }
+  }
+  .tools li { padding: 8px 0; border-bottom: 1px solid var(--rule); font-size: 0.95rem; }
+
+  /* Bento: first card spans two rows on the left; two cards stack on the right. No empty cells. */
+  .bento {
+    list-style: none; margin: 32px 0 0; padding: 0;
+    display: grid; grid-template-columns: 1.2fr 1fr; grid-auto-flow: dense; gap: 16px;
+  }
+  .card {
+    border: 1px solid var(--rule); border-radius: 12px; background: var(--card);
+    padding: 32px; display: flex; flex-direction: column;
+    transition: box-shadow 0.2s ease;
+  }
+  .card:hover { box-shadow: 0 2px 8px rgb(0 0 0 / 0.04); }
+  .card:first-child { grid-row: span 2; justify-content: space-between; background: var(--canvas); }
+  .card p { margin: 0; }
+  .stat { font-size: 3.5rem; line-height: 1; letter-spacing: -0.03em; }
+  .card:first-child .stat { font-size: clamp(4.5rem, 9vw, 7rem); }
+  .label { margin-top: 10px !important; }
+  .card h3 { margin: 32px 0 6px; font-size: 1.05rem; font-weight: 500; }
+  .card:first-child h3 { margin-top: auto; padding-top: 48px; }
+
+  .rows { list-style: none; margin: 0; padding: 0; }
+  .rows li {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+    padding: 20px 0; border-bottom: 1px solid var(--rule);
+  }
+  .rows .mono { white-space: nowrap; }
+  strong { font-weight: 500; margin-right: 6px; }
   .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+
+  .contact { border-top: 1px solid var(--rule); padding-top: 64px; }
+  .contact p { font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 32px; max-width: 24ch; }
   @media (max-width: 860px) {
-    .about { gap: 72px; }
-    .cols, .pair { grid-template-columns: 1fr; gap: 48px; }
+    .about { gap: 96px; padding-top: 48px; }
+    .cols, .pair { grid-template-columns: 1fr; gap: 56px; }
     .facts { position: static; }
-    .shipped { grid-template-columns: 1fr; }
+    .bento { grid-template-columns: 1fr; }
+    .card:first-child { grid-row: auto; }
+    .card { padding: 24px; }
+  }
+  @media (max-width: 480px) {
+    .rows li { flex-direction: column; gap: 4px; }
   }
 </style>

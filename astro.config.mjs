@@ -22,12 +22,12 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.local(),
-      name: 'Inter',
-      cssVariable: '--font-inter',
+      name: 'Geist',
+      cssVariable: '--font-geist',
       fallbacks: ['system-ui', 'sans-serif'],
       options: {
         variants: [
-          { src: [fontsource('@fontsource-variable/inter', 'inter-latin-wght-normal.woff2')], weight: '100 900', style: 'normal' },
+          { src: [fontsource('@fontsource-variable/geist', 'geist-latin-wght-normal.woff2')], weight: '100 900', style: 'normal' },
         ],
       },
     },
