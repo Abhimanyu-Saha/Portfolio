@@ -8,6 +8,7 @@ tags: [AI / LLM UX, B2B SaaS, Systems design]
 status: Final UI designed, spec in progress
 accent: '#ece6dc'
 order: 5
+draft: true
 ---
 
 ## The problem

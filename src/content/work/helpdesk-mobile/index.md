@@ -8,6 +8,7 @@ tags: [Mobile, Interaction design, UX revamp]
 status: Shipped
 accent: '#eae4e4'
 order: 7
+draft: true
 ---
 
 ## The problem

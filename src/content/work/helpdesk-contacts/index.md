@@ -1,6 +1,6 @@
 ---
 title: A contact list you can read without clicking into it
-summary: A redesign of the Helpdesk CRM's Contacts section, so agents and admins can find a customer and see their history in one click instead of three.
+summary: A redesign of the Helpdesk CRM's Contacts section, so agents and admins can find a customer and see their history in one click instead of two.
 company: LimeChat
 role: Product Designer
 year: 2023
@@ -8,6 +8,7 @@ tags: [B2B SaaS, Interaction design, UX revamp]
 status: Shipped
 accent: '#e4e8ea'
 order: 6
+draft: true
 ---
 
 ## The problem
