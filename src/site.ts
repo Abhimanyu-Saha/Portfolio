@@ -3,7 +3,7 @@ export const SITE = {
   name: 'Abhimanyu Saha',
   role: 'Product Designer',
   tagline: 'I design calm, useful software for complicated work.',
-  email: 'hello@example.com', // TODO: your public contact email
+  email: 'abhimanyu.saha1995@gmail.com',
   // Add more as { label, href }, e.g. Dribbble, Behance, Read.cv.
   links: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abhimanyusaha/' },
