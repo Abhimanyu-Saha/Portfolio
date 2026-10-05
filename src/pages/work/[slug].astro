@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 const { project, next } = Astro.props;
-const { title, summary, company, role, year, tags, cover, coverAlt, accent } = project.data;
+const { title, summary, company, role, year, tags, status, cover, coverAlt, accent } = project.data;
 const { Content } = await render(project);
 
 // 1200x630 JPEG for link previews (LinkedIn, Slack, etc.).
@@ -33,14 +33,14 @@ const ogImage = cover
         <div><dt class="muted">Company</dt><dd>{company}</dd></div>
         <div><dt class="muted">Role</dt><dd>{role}</dd></div>
         <div><dt class="muted">Year</dt><dd>{year}</dd></div>
-        {tags.length > 0 && <div><dt class="muted">Scope</dt><dd>{tags.join(', ')}</dd></div>}
+        {status ? <div><dt class="muted">Status</dt><dd>{status}</dd></div> : tags.length > 0 && <div><dt class="muted">Scope</dt><dd>{tags.join(', ')}</dd></div>}
       </dl>
     </header>
 
+    {cover && (
     <div class="container">
       <div class="cover" style={`--cover-accent: ${accent}`}>
-        {cover && (
-          <Picture
+        <Picture
             src={cover}
             alt={coverAlt}
             formats={['avif', 'webp']}
@@ -51,9 +51,9 @@ const ogImage = cover
             loading="eager"
             fetchpriority="high"
           />
-        )}
       </div>
     </div>
+    )}
 
     <div class="container body">
       <div class="prose"><Content /></div>

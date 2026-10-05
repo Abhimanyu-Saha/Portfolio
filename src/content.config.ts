@@ -11,6 +11,8 @@ const work = defineCollection({
     role: z.string(),
     year: z.number(),
     tags: z.array(z.string()).default([]),
+    // Where the project stands, e.g. "Shipped" or "Spec complete, pilot planned".
+    status: z.string().optional(),
     // Relative to the Markdown file, e.g. "./cover.jpg". Astro resizes it and serves AVIF/WebP.
     // Omit to show a colour block instead.
     cover: image().optional(),
