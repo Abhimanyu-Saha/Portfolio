@@ -4,11 +4,9 @@ export const SITE = {
   role: 'Product Designer',
   tagline: 'I design calm, useful software for complicated work.',
   email: 'hello@example.com', // TODO: your public contact email
-  // TODO: replace with your real profile URLs.
+  // Add more as { label, href }, e.g. Dribbble, Behance, Read.cv.
   links: [
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-    { label: 'Dribbble', href: 'https://dribbble.com/' },
-    { label: 'Read.cv', href: 'https://read.cv/' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abhimanyusaha/' },
   ],
 };
 
