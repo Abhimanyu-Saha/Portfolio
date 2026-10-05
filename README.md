@@ -6,7 +6,7 @@ Design portfolio built with [Astro](https://astro.build). Static output, deploye
 
 ```sh
 npm install
-npm run dev      # http://localhost:4321/portfolio/
+npm run dev      # http://localhost:4321/Portfolio/
 npm run build    # outputs to dist/
 ```
 
@@ -46,6 +46,6 @@ Images are what will make or break this. If a page feels slow, check the image s
 Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it.
 One-time setup: in the repo go to **Settings → Pages → Source** and pick **GitHub Actions**.
 
-The site will be at `https://abhimanyu-saha.github.io/portfolio/`.
+The site will be at `https://abhimanyu-saha.github.io/Portfolio/`.
 For a custom domain, set `SITE` to your domain and `BASE` to `/` in `astro.config.mjs`
 and add `public/CNAME`.

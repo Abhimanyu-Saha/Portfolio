@@ -2,10 +2,11 @@
 import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// GitHub Pages serves this repo at https://abhimanyu-saha.github.io/portfolio/.
+// GitHub Pages serves this repo at https://abhimanyu-saha.github.io/Portfolio/.
+// The path is case-sensitive and must match the repo name exactly.
 // If you move to a custom domain, set SITE to it and BASE to '/'.
 const site = process.env.SITE ?? 'https://abhimanyu-saha.github.io';
-const base = process.env.BASE ?? '/portfolio';
+const base = process.env.BASE ?? '/Portfolio';
 
 /** @param {string} pkg @param {string} file */
 const fontsource = (pkg, file) => `./node_modules/${pkg}/files/${file}`;
