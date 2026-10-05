@@ -4,15 +4,17 @@ import { z } from 'astro/zod';
 
 const work = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/work' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     summary: z.string(),
     company: z.string(),
     role: z.string(),
     year: z.number(),
     tags: z.array(z.string()).default([]),
-    // Path under /public, e.g. "/work/helpdesk/cover.jpg". Omit to show a colour block.
-    cover: z.string().optional(),
+    // Relative to the Markdown file, e.g. "./cover.jpg". Astro resizes it and serves AVIF/WebP.
+    // Omit to show a colour block instead.
+    cover: image().optional(),
+    coverAlt: z.string().default(''),
     accent: z.string().default('#e8e4dc'),
     // Lower numbers show first on the home page.
     order: z.number().default(100),

@@ -1,12 +1,13 @@
 ---
-# Copy this file into src/content/work/<slug>.md. The filename becomes the URL: /work/<slug>
+# Copy this file to src/content/work/<slug>/index.md. The folder name becomes the URL: /work/<slug>
 title: Short, outcome-led title
 summary: One sentence. What changed for users or the business, not what you made.
 company: Company name
 role: Lead Product Designer
 year: 2026
 tags: [Research, Interaction design, Design system]
-cover: /work/<slug>/cover.jpg   # put images in public/work/<slug>/
+cover: ./cover.jpg              # images sit next to this file; export at 2x, Astro compresses them
+coverAlt: ''                    # describe the cover if it carries meaning; leave empty if decorative
 accent: '#e8e4dc'               # card colour shown when there's no cover
 order: 1                        # lower shows first on the home page
 draft: true                     # flip to false when it's ready to publish
@@ -34,7 +35,7 @@ Time, tech, org, compliance. Constraints make the decisions interesting.
 Two or three key decisions. For each: the options, what you chose, and why.
 Show the work that changed your mind, not every artefact you produced.
 
-![Describe what the image shows](/portfolio/work/<slug>/flow.png)
+![Describe what the image shows](./flow.png)
 
 ## Outcome
 

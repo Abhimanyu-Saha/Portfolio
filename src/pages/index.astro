@@ -1,13 +1,22 @@
 ---
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { SITE } from '../site';
+import { SITE, url } from '../site';
 import { getWork } from '../lib';
 
 const work = await getWork();
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.name,
+  jobTitle: SITE.role,
+  url: new URL(url('/'), Astro.site).href,
+  sameAs: SITE.links.map((l) => l.href),
+};
 ---
 
-<Base>
+<Base jsonLd={person}>
   <section class="hero container">
     <p class="muted">{SITE.role}</p>
     <h1 class="serif">{SITE.tagline}</h1>
@@ -16,7 +25,7 @@ const work = await getWork();
   <section id="work" class="container" aria-labelledby="work-heading">
     <h2 id="work-heading" class="label muted">Selected work</h2>
     <div class="grid">
-      {work.map((project) => <ProjectCard project={project} />)}
+      {work.map((project, i) => <ProjectCard project={project} eager={i < 2} />)}
     </div>
   </section>
 </Base>
