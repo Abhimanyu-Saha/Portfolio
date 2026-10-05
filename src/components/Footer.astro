@@ -1,0 +1,23 @@
+---
+import { SITE } from '../site';
+const year = new Date().getFullYear();
+---
+
+<footer class="container">
+  <div>
+    <p class="cta serif">Have something worth designing?</p>
+    <a class="email" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+  </div>
+  <ul>
+    {SITE.links.map((l) => <li><a href={l.href} rel="me noopener" target="_blank">{l.label}</a></li>)}
+  </ul>
+  <p class="muted small">© {year} {SITE.name}</p>
+</footer>
+
+<style>
+  footer { border-top: 1px solid var(--line); margin-top: 120px; padding-top: 64px; padding-bottom: 48px; display: grid; gap: 32px; }
+  .cta { font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1; margin: 0 0 12px; }
+  .email { font-size: 1.1rem; }
+  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 24px; }
+  .small { font-size: 0.875rem; margin: 0; }
+</style>

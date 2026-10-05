@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+---
+
+<Base title="About" description={`About ${SITE.name}, ${SITE.role}.`}>
+  <section class="container about">
+    <h1 class="serif">About</h1>
+    <div class="prose">
+      <!-- TODO: rewrite in your own voice. Keep it short; recruiters skim. -->
+      <p class="lead">
+        I'm {SITE.name}, a {SITE.role.toLowerCase()} who likes turning messy, high-stakes workflows into
+        interfaces people trust.
+      </p>
+      <p>
+        Write two or three short paragraphs here: what you work on now, what kind of problems you're
+        best at, and what you're looking for next.
+      </p>
+
+      <h2>Experience</h2>
+      <ul class="cv">
+        <li><span>Product Designer, Company</span><span class="muted">20XX — Now</span></li>
+        <li><span>Role, Company</span><span class="muted">20XX — 20XX</span></li>
+      </ul>
+
+      <h2>Get in touch</h2>
+      <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about { padding-top: 48px; }
+  h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin: 0 0 40px; }
+  .prose { margin: 0; }
+  .lead { font-size: 1.35rem; line-height: 1.45; }
+  .cv { list-style: none; padding: 0; }
+  .cv li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+</style>

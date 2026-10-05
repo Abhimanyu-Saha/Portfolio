@@ -1,0 +1,28 @@
+---
+import { SITE, url } from '../site';
+
+const nav = [
+  { label: 'Work', href: url('/#work') },
+  { label: 'About', href: url('/about') },
+  { label: 'Contact', href: `mailto:${SITE.email}` },
+];
+---
+
+<header class="container">
+  <a class="name" href={url('/')}>{SITE.name}</a>
+  <nav aria-label="Primary">
+    {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+  </nav>
+</header>
+
+<style>
+  header {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding-top: 28px; padding-bottom: 28px;
+  }
+  .name { font-weight: 600; text-decoration: none; }
+  nav { display: flex; gap: 24px; }
+  nav a { text-decoration: none; color: var(--muted); }
+  nav a:hover { color: var(--text); }
+  @media (max-width: 480px) { nav { gap: 16px; } }
+</style>
