@@ -1,39 +1,166 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE } from '../site';
+
+const shipped = [
+  {
+    stat: '29%',
+    label: 'more merchants adopted',
+    title: 'WhatsApp Commerce Suite',
+    body: 'Lets brands run marketing campaigns, automate support and sell inside WhatsApp chats.',
+  },
+  {
+    stat: '100+',
+    label: 'components, 20% faster handoff',
+    title: 'Lime Design System',
+    body: 'Built from scratch and still maintained by me. One visual language across 5+ product surfaces.',
+  },
+  {
+    stat: 'LLM',
+    label: 'agent UX patterns',
+    title: 'AI agent conversations',
+    body: "Conversation flows, fallbacks and human-handoff experiences for LimeChat's GPT-powered chatbot.",
+  },
+];
+
+const experience = [
+  { role: 'Senior Product Designer', org: 'LimeChat', place: 'Bengaluru', years: '2026 — Now' },
+  { role: 'Product Designer', org: 'LimeChat', place: 'Bengaluru', years: '2022 — 2026' },
+  { role: 'Junior Architect', org: 'Prakalpa Space Kraft', place: 'Kolkata', years: '2019 — 2020' },
+  { role: 'Intern Architect', org: 'Public Works Department, West Bengal', place: 'Kolkata', years: '2018 — 2019' },
+  { role: '3D Visualiser & Graphic Designer', org: 'Freelance', place: 'Kolkata', years: '2015 — 2022' },
+];
+
+const education = [
+  { role: "Master's in Information Design", org: 'National Institute of Design', years: '2020 — 2023' },
+  { role: 'Bachelor of Architecture', org: 'NIT Raipur', years: '2014 — 2019' },
+];
+
+const recognition = [
+  'Best Thesis Award',
+  "D'source SDG Challenge — Winner",
+  'Information is Beautiful Awards — Longlist',
+];
 ---
 
-<Base title="About" description={`About ${SITE.name}, ${SITE.role}.`}>
+<Base
+  title="About"
+  description={`${SITE.name} is a ${SITE.role} at ${SITE.company}, designing AI-powered commerce tools for 400+ D2C brands.`}
+>
   <section class="container about">
-    <h1 class="serif">About</h1>
-    <div class="prose">
-      <!-- TODO: rewrite in your own voice. Keep it short; recruiters skim. -->
-      <p class="lead">
-        I'm {SITE.name}, a {SITE.role.toLowerCase()} who likes turning messy, high-stakes workflows into
-        interfaces people trust.
-      </p>
-      <p>
-        Write two or three short paragraphs here: what you work on now, what kind of problems you're
-        best at, and what you're looking for next.
-      </p>
+    <header class="intro">
+      <p class="muted eyebrow">{SITE.role} at {SITE.company} · {SITE.location}</p>
+      <h1 class="serif">
+        I design AI-powered commerce tools that help 400+ brands sell, support and grow on WhatsApp.
+      </h1>
+    </header>
 
-      <h2>Experience</h2>
-      <ul class="cv">
-        <li><span>Product Designer, Company</span><span class="muted">20XX — Now</span></li>
-        <li><span>Role, Company</span><span class="muted">20XX — 20XX</span></li>
+    <div class="cols">
+      <div class="story prose">
+        <p class="lead">My path into product design wasn't a straight line: architecture, then information design, then software.</p>
+        <p>
+          Architecture at NIT Raipur taught me to think in systems: how parts depend on each other, and
+          how people actually move through a space. Information Design at the National Institute of
+          Design (where I entered with All-India Rank 1) taught me to make complex things legible.
+        </p>
+        <p>
+          At {SITE.company} I lead product design for one of India's fastest-growing conversational AI
+          platforms. I work end to end on B2B SaaS: research, flows, interface, design system, and the
+          new problems of designing for LLMs, from conversation design and prompt UX to handing a chat
+          from an AI agent to a human.
+        </p>
+        <p>
+          Outside work I'm exploring how AI is changing design, both as a tool and as a material,
+          through side projects like <em>8 Frames</em> and experiments with generative interfaces.
+        </p>
+        <p class="open">
+          Always happy to talk about AI, design systems or hard B2B problems.<br />
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </p>
+      </div>
+
+      <aside class="facts">
+        <h2 class="label muted">Toolkit</h2>
+        <p>Figma, FigJam, Maze, Hotjar, Notion, Linear</p>
+        <h2 class="label muted">Focus</h2>
+        <p>Design systems, LLM &amp; agent UX, user research, B2B SaaS</p>
+      </aside>
+    </div>
+
+    <section aria-labelledby="shipped">
+      <h2 id="shipped" class="label muted">Selected impact at {SITE.company}</h2>
+      <ul class="shipped">
+        {shipped.map((s) => (
+          <li>
+            <p class="stat serif">{s.stat}</p>
+            <p class="muted small">{s.label}</p>
+            <h3>{s.title}</h3>
+            <p class="muted">{s.body}</p>
+          </li>
+        ))}
       </ul>
+    </section>
 
-      <h2>Get in touch</h2>
-      <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    <section aria-labelledby="experience">
+      <h2 id="experience" class="label muted">Experience</h2>
+      <ul class="cv">
+        {experience.map((e) => (
+          <li>
+            <span><strong>{e.role}</strong> <span class="muted">· {e.org}</span></span>
+            <span class="muted">{e.years}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <div class="pair">
+      <section aria-labelledby="education">
+        <h2 id="education" class="label muted">Education</h2>
+        <ul class="cv">
+          {education.map((e) => (
+            <li>
+              <span><strong>{e.role}</strong><br /><span class="muted">{e.org}</span></span>
+              <span class="muted">{e.years}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section aria-labelledby="recognition">
+        <h2 id="recognition" class="label muted">Recognition</h2>
+        <ul class="cv">
+          {recognition.map((r) => <li><span>{r}</span></li>)}
+        </ul>
+      </section>
     </div>
   </section>
 </Base>
 
 <style>
-  .about { padding-top: 48px; }
-  h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin: 0 0 40px; }
-  .prose { margin: 0; }
+  .about { padding-top: 48px; display: grid; gap: 96px; }
+  .eyebrow { margin: 0 0 20px; }
+  h1 { font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1.05; margin: 0; max-width: 20ch; }
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 64px; align-items: start; }
+  .story { margin: 0; }
   .lead { font-size: 1.35rem; line-height: 1.45; }
-  .cv { list-style: none; padding: 0; }
-  .cv li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .open { border-top: 1px solid var(--line); margin-top: 32px; padding-top: 24px; }
+  .facts { position: sticky; top: 24px; }
+  .facts p { margin: 0 0 32px; }
+  .label { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px; }
+  .shipped { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .shipped li { border-top: 1px solid var(--line); padding-top: 24px; }
+  .shipped p { margin: 0; }
+  .stat { font-size: 3.25rem; line-height: 1; color: var(--accent); }
+  .small { font-size: 0.875rem; margin-top: 8px !important; }
+  .shipped h3 { font-size: 1.05rem; margin: 24px 0 6px; }
+  .cv { list-style: none; padding: 0; margin: 0; }
+  .cv li { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .cv li > span:last-child { white-space: nowrap; }
+  strong { font-weight: 500; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  @media (max-width: 860px) {
+    .about { gap: 72px; }
+    .cols, .pair { grid-template-columns: 1fr; gap: 48px; }
+    .facts { position: static; }
+    .shipped { grid-template-columns: 1fr; }
+  }
 </style>

@@ -1,7 +1,9 @@
 // Edit this file to change your name, bio and links everywhere on the site.
 export const SITE = {
   name: 'Abhimanyu Saha',
-  role: 'Product Designer',
+  role: 'Senior Product Designer',
+  company: 'LimeChat',
+  location: 'Bengaluru, India',
   tagline: 'I design calm, useful software for complicated work.',
   email: 'abhimanyu.saha1995@gmail.com',
   // Add more as { label, href }, e.g. Dribbble, Behance, Read.cv.
