@@ -55,4 +55,6 @@ The feature shipped in the Helpdesk CRM.
 
 ## What I'd do differently
 
-I'd define the success measure before designing, not after. The spec never set a baseline tagging rate or a target, so I can say the feature shipped but not how much it moved tag coverage. "Share of resolved tickets with at least one tag" would have been easy to track from day one.
+I'd set the success metric before designing. The whole reason for the feature was that tickets weren't getting tagged, yet I never recorded how many weren't. With no baseline and no target, I can say it shipped but not whether it worked.
+
+The metric was simple: the share of resolved tickets with at least one tag, measured before launch and again a month after. Taking that baseline would have cost almost nothing, and it would have turned this from a feature I shipped into a result I can show.

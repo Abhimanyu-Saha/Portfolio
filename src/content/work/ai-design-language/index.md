@@ -79,4 +79,6 @@ The first two tasks are small: a half-day audit of how today's AI surfaces actua
 
 ## What I'd do differently
 
-I'd run the audit and the sponsor conversation before writing an eleven-section spec, not list them as the first tasks inside it. Most of the spec's risk sits in two questions that together take less than a day to answer.
+I'd validate before writing the spec. Right now, the half-day audit of our AI surfaces and the 15-minute conversation with the sponsor are listed as the first tasks *inside* the spec. They should have come before it.
+
+Those two checks answer the two questions that put the spec on hold: is the user-side problem real, and what does leadership mean by success? If the audit had shown agents moving between surfaces without confusion, the work would have shrunk to a token-and-component job. That's a much smaller spec. I wrote the full version first and found out afterwards how much of it depended on things I hadn't checked.
