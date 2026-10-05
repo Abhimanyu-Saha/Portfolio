@@ -12,9 +12,11 @@ interface Props {
   image?: string;
   type?: 'website' | 'article';
   jsonLd?: Record<string, unknown>;
+  /** Pages with their own closing CTA can hide the footer one. */
+  footerCta?: boolean;
 }
 
-const { title, description = SITE.tagline, image = url('/og.png'), type = 'website', jsonLd } = Astro.props;
+const { title, description = SITE.tagline, image = url('/og.png'), type = 'website', jsonLd, footerCta = true } = Astro.props;
 const pageTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${SITE.role}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
@@ -34,7 +36,7 @@ const ogImage = new URL(image, Astro.site);
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
     <link rel="sitemap" href={url('/sitemap-index.xml')} />
 
-    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-geist" preload />
     <Font cssVariable="--font-instrument" preload />
 
     <meta property="og:type" content={type} />
@@ -55,6 +57,6 @@ const ogImage = new URL(image, Astro.site);
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer cta={footerCta} />
   </body>
 </html>

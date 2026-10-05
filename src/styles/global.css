@@ -8,7 +8,7 @@
   --radius: 14px;
   --max: 1120px;
   --prose: 680px;
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-geist);
   --font-serif: var(--font-instrument);
   color-scheme: light dark;
 }
@@ -75,4 +75,34 @@ h1, h2, h3 { line-height: 1.15; font-weight: 500; letter-spacing: -0.01em; }
 @view-transition { navigation: auto; }
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
+}
+
+/* Minimal editorial pages (home, about): warm monochrome tokens + mono meta text */
+.minimal {
+  --ink: #111111; --sub: #787774; --rule: #eaeaea; --card: #ffffff; --canvas: #fbfbfa;
+  --mono: 'Geist Mono', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+  color: var(--ink);
+}
+@media (prefers-color-scheme: dark) {
+  .minimal { --ink: var(--text); --sub: var(--muted); --rule: var(--line); --card: var(--surface); --canvas: var(--bg); }
+}
+.minimal .meta { font-family: var(--mono); font-size: 0.78rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.06em; color: var(--sub); margin: 0 0 24px; }
+.minimal .btn {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 6px;
+  background: #111111; color: #ffffff; text-decoration: none; font-weight: 500; font-size: 0.95rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.minimal .btn:hover { background: #333333; color: #ffffff; }
+.minimal .btn:active { transform: scale(0.98); }
+@media (prefers-color-scheme: dark) {
+  .minimal .btn, .minimal .btn:hover { background: var(--text); color: var(--bg); }
+  .minimal .btn:hover { opacity: 0.88; }
+}
+
+/* Scroll entry, only applied once src/scripts/reveal.ts has marked elements as pending */
+.pending { opacity: 0; transform: translateY(12px); }
+.pending.in {
+  opacity: 1; transform: none;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 80ms);
 }
